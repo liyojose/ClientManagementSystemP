@@ -12,7 +12,7 @@ namespace ClientManagementSystem.Common.Services
     public interface IClientService
     {
         Task<Client> CreateClient(Client client);
-        Task<Client> DeleteClient(Client client);
+        Task<bool> DeleteClient(Client client);
         Task<Client> GetClientAsync(Guid id);
         Task<List<Client>> GetClientsAsync();
         Task<Client> UpdateClient(Client client);
@@ -49,11 +49,11 @@ namespace ClientManagementSystem.Common.Services
             return client;
         }
 
-        public async Task<Client> DeleteClient(Client client)
+        public async Task<bool> DeleteClient(Client client)
         {
             _dataContext.Clients.Remove(client);
             await _dataContext.SaveChangesAsync();
-            return client;
+            return true;
         }
     }
 }

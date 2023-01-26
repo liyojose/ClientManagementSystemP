@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ClientManagementSystem.Common\ClientManagementSystem.Common.csproj" />
     <ProjectReference Include="..\ClientManagementSystem.Data\ClientManagementSystem.Data.csproj" />
+    <ProjectReference Include="..\ClientManagementSystem\ClientManagementSystem.Api.csproj" />
   </ItemGroup>
 
 </Project>

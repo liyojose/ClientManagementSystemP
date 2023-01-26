@@ -72,12 +72,7 @@ namespace ClientManagementSystem.Api.Controllers
         [SwaggerResponse(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var deletedClient = await _clientService.DeleteClient(new Client { Id = id });
-            if (deletedClient == null)
-            {
-                return NotFound();
-            }
-
+            var isdeleted = await _clientService.DeleteClient(new Client { Id = id });
             return Ok();
         }
 
@@ -113,6 +108,7 @@ namespace ClientManagementSystem.Api.Controllers
             var dtoclient = _mapper.Map<List<ClientDto>>(clients);
             return Ok(dtoclient);
         }
+
 
     }
 }
