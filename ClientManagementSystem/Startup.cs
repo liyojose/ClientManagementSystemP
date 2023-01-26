@@ -1,7 +1,11 @@
+using ClientManagementSystem.Api.Exception;
+using ClientManagementSystem.Common;
+using ClientManagementSystem.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,6 +23,7 @@ namespace ClientManagementSystem
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -32,6 +37,17 @@ namespace ClientManagementSystem
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ClientManagementSystem", Version = "v1" });
             });
+
+            services.AddLogging();
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            //var dbconnectionString = Environment.GetEnvironmentVariable("DBConnection");
+            var dbconnectionString = Configuration.GetValue<string>("AppSettings:DBConnection");
+            services.AddDbContext<CMSDbContext>(options =>
+            {
+                options.UseSqlServer(dbconnectionString);
+            });
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +70,8 @@ namespace ClientManagementSystem
             {
                 endpoints.MapControllers();
             });
+
+            app.UseMiddleware<ExceptionMiddleware>();
         }
     }
 }
