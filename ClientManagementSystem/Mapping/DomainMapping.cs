@@ -12,7 +12,7 @@ namespace ClientManagementSystem.Api.Mapping
     {
         public DomainToResponseMappingProfile()
         {
-            CreateMap<Client, ClientDto>();
+            CreateMap<Client, ClientDto>().ReverseMap();
         }
     }
 }

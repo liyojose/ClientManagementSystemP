@@ -29,12 +29,12 @@ namespace ClientManagementSystem.Common.Services
 
         public async Task<Client> GetClientAsync(Guid id)
         {
-            return await _dataContext.Clients.SingleOrDefaultAsync(s => s.Id == id);
+            return await _dataContext.Clients.AsNoTracking().SingleOrDefaultAsync(s => s.Id == id);
         }
 
         public async Task<List<Client>> GetClientsAsync()
         {
-            return await _dataContext.Clients.ToListAsync();
+            return await _dataContext.Clients.AsNoTracking().ToListAsync();
         }
         public async Task<Client> CreateClient(Client client)
         {

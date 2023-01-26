@@ -25,9 +25,10 @@ namespace ClientManagementSystem.Api.Controllers
         private readonly IClientService _clientService;
         private readonly IMapper _mapper;
 
-        public ClientController(IClientService clientService)
+        public ClientController(IClientService clientService, IMapper mapper)
         {
             _clientService = clientService;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -37,6 +38,7 @@ namespace ClientManagementSystem.Api.Controllers
         public async Task<IActionResult> Post([FromBody] ClientDto client)
         {
             var dbclient = _mapper.Map<Client>(client);
+            dbclient.CreatedDate = DateTime.Now;
             var createdClient = await _clientService.CreateClient(dbclient);
             return CreatedAtAction(nameof(Get), new { id = createdClient.Id }, createdClient);
         }
