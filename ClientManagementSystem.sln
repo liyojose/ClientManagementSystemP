@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientManagementSystem.Api"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientManagementSystem.Data", "ClientManagementSystem.Data\ClientManagementSystem.Data.csproj", "{CE6A6EE3-2833-4DE9-9846-D69891EBB8D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientManagementSystem.Common", "ClientManagementSystem.Common\ClientManagementSystem.Common.csproj", "{13782E09-59F3-40EC-BD3E-CD1AA75CD620}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientManagementSystem.Business", "ClientManagementSystem.Common\ClientManagementSystem.Business.csproj", "{13782E09-59F3-40EC-BD3E-CD1AA75CD620}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientManagementSystem.Test", "ClientManagementSystem.Test\ClientManagementSystem.Test.csproj", "{EAFEEBEB-C69B-4508-95A4-AABA9C02C02C}"
 EndProject

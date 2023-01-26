@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClientManagementSystem.Common\ClientManagementSystem.Common.csproj" />
+    <ProjectReference Include="..\ClientManagementSystem.Common\ClientManagementSystem.Business.csproj" />
     <ProjectReference Include="..\ClientManagementSystem.Data\ClientManagementSystem.Data.csproj" />
   </ItemGroup>
 
