@@ -93,14 +93,13 @@ namespace ClientManagementSystem.Api.Controllers
                 return NotFound();
             }
             var dtoclient = _mapper.Map<ClientDto>(client);
-            return Ok(client);
+            return Ok(dtoclient);
         }
 
         [HttpGet]
         [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(List<ClientDto>))]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
-        [SwaggerResponse(StatusCodes.Status409Conflict)]
-        [SwaggerResponse(StatusCodes.Status500InternalServerError)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
         public async Task<IActionResult> GetAll()
         {
@@ -109,8 +108,8 @@ namespace ClientManagementSystem.Api.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(clients);
+            var dtoclient = _mapper.Map<List<ClientDto>>(clients);
+            return Ok(dtoclient);
         }
 
     }

@@ -1,5 +1,6 @@
 using ClientManagementSystem.Api.Exception;
 using ClientManagementSystem.Common;
+using ClientManagementSystem.Common.Services;
 using ClientManagementSystem.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +32,7 @@ namespace ClientManagementSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddLogging();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -48,6 +49,8 @@ namespace ClientManagementSystem
                 options.UseSqlServer(dbconnectionString);
             });
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddTransient<IClientService, ClientService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,7 +12,6 @@ namespace ClientManagementSystem.Common.Services
     public interface IClientService
     {
         Task<Client> CreateClient(Client client);
-        Task<bool> CreateClientAsync(Client Client);
         Task<Client> DeleteClient(Client client);
         Task<Client> GetClientAsync(Guid id);
         Task<List<Client>> GetClientsAsync();
@@ -26,13 +25,6 @@ namespace ClientManagementSystem.Common.Services
         public ClientService(CMSDbContext dataContext)
         {
             _dataContext = dataContext;
-        }
-
-        public async Task<bool> CreateClientAsync(Client client)
-        {
-            await _dataContext.Clients.AddAsync(client);
-            var createdRowCount = await _dataContext.SaveChangesAsync();
-            return createdRowCount > 0;
         }
 
         public async Task<Client> GetClientAsync(Guid id)
